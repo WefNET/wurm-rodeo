@@ -1,3 +1,9 @@
+body {
+    background-image: url("./../svg/bullseye.svg");
+    background-repeat: no-repeat;
+    background-position-x: right;
+}
+
 .satisfy-regular {
     font-family: "Satisfy", cursive;
     font-weight: 400;
