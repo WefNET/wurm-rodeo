@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+    const blogEntries = await getCollection('blog');
+    return blogEntries.map(entry => ({
+        params: { slug: entry.slug }, props: { entry },
+    }));
+}
+// 2. For your template, you can get the entry directly from the prop
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+import Header from './../../layout/header.astro'
+
+import '../../styles/wurm.styles.css'
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+		<title>Wurm Rodeo</title>
+	</head>
+	<body>
+        <Header title="Blog" />
+        <div class="blog-panel">
+            <h1>{entry.data.title}</h1>
+            <Content />
+        </div>
+    </body>
+    <style is:inline>
+        .blog-panel {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+
+            p {
+                font-size: larger;
+                line-height: 1.5;
+            }
+        }
+    </style>
+    </body>
+    <style is:inline>
+            .panel {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                width: 1200px;
+                margin: 20px;
+                padding: 20px;
+                background-color: #f0f0f0;
+                opacity: 0.8;
+                border: thin red solid;
+  
+                p {
+                    font-size: larger;
+                    line-height: 1.5;
+                }
+            }
+    </style>
+</html>

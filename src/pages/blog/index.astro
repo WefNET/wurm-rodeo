@@ -1,4 +1,8 @@
 ---
+import Header from './../../layout/header.astro'
+
+import '../../styles/wurm.styles.css'
+
 import { getCollection, getEntry } from 'astro:content';
 
 // Get all entries from a collection.
@@ -7,6 +11,42 @@ import { getCollection, getEntry } from 'astro:content';
 const allBlogPosts = await getCollection('blog');
 ---
 
-{allBlogPosts.map(p => (
-    <a href={p.slug}>{p.data.title}</a>
-  ))}
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+		<title>Wurm Rodeo</title>
+	</head>
+	<body>
+    <Header title="Blog" />
+
+    <div class="panel">
+      <h1 class="satisfy-regular">Blog</h1>
+      <p>
+        {allBlogPosts.map(p => (
+          <a href=`/blog/${p.slug}`>{p.data.title}</a>
+        ))}
+      </p>
+    </div>
+  </body>
+  <style is:inline>
+          .panel {
+              font-family: Verdana, Geneva, Tahoma, sans-serif;
+              margin: 20px;
+              padding: 20px;
+              background-color: #f0f0f0;
+              opacity: 0.8;
+              border: thin red solid;
+
+              p {
+                  font-size: larger;
+                  line-height: 1.5;
+              }
+          }
+  </style>
+</html>
