@@ -30,7 +30,7 @@ import '../../styles/wurm.styles.css'
 	<body>
         <Header title="Blog" />
         <div class="blog-panel">
-            <h1>{entry.data.title}</h1>
+            <h1 class="satisfy-regular">{entry.data.title}</h1>
             <Content />
         </div>
     </body>
@@ -40,29 +40,13 @@ import '../../styles/wurm.styles.css'
             width: 1200px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #f0f0f0;
+            background-color:  rgba(240, 240, 240, 0.8);
 
             p {
-                font-size: larger;
+                font-size: large;
                 line-height: 1.5;
             }
         }
     </style>
     </body>
-    <style is:inline>
-            .panel {
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-                width: 1200px;
-                margin: 20px;
-                padding: 20px;
-                background-color: #f0f0f0;
-                opacity: 0.8;
-                border: thin red solid;
-  
-                p {
-                    font-size: larger;
-                    line-height: 1.5;
-                }
-            }
-    </style>
 </html>
