@@ -31,6 +31,7 @@ import '../../styles/wurm.styles.css'
         <Header title="Blog" />
         <div class="blog-panel">
             <h1 class="satisfy-regular">{entry.data.title}</h1>
+            <p>By: {entry.data.author} on {entry.data.published.toLocaleDateString()}</p>
             <Content />
         </div>
     </body>
