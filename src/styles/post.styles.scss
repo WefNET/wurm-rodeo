@@ -1,0 +1,27 @@
+.blog-panel {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(240, 240, 240, 0.9);
+
+    table {
+        border-collapse: collapse;
+        td,
+        th {
+            border: 1px solid #ddd;
+
+            padding: 8px;
+        }
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #05668d;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #cecdcd;
+        }
+    }
+}
