@@ -27,6 +27,7 @@ const allSkillPosts = await getCollection('skills');
 
     <div class="panel">
         <h1 class="satisfy-regular">Skill Guides</h1>
+        <p>With over 10 years of experience in Wurm Online, I have developed several skilling and grinding guides for your reference.</p>
         <ul>
         {allSkillPosts.map(p => (
             <li><a href=`/skills/${p.slug}`>{p.data.skillName}</a></li>
