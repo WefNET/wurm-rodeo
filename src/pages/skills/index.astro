@@ -1,7 +1,8 @@
 ---
-import Header from './../../layout/header.astro'
+import Header from './../../layout/header.astro';
 
-import '../../styles/wurm.styles.css'
+import '../../styles/wurm.styles.css';
+import "../../styles/post.styles.scss";
 
 import { getCollection, getEntry } from 'astro:content';
 
@@ -9,6 +10,8 @@ import { getCollection, getEntry } from 'astro:content';
 // Requires the name of the collection as an argument.
 // Example: retrieve `src/content/blog/**`
 const allSkillPosts = await getCollection('skills');
+
+allSkillPosts.sort((a, b) => a.data.skillName.localeCompare(b.data.skillName))
 ---
 
 <html lang="en">
@@ -25,9 +28,9 @@ const allSkillPosts = await getCollection('skills');
 	<body>
     <Header title="Blog" />
 
-    <div class="panel">
+    <div class="blog-panel">
         <h1 class="satisfy-regular">Skill Guides</h1>
-        <p>With over 10 years of experience in Wurm Online, I have developed several skilling and grinding guides for your reference.</p>
+        <p>With over 10 years of experience in Wurm Online, I have curated several skilling and grinding guides for your reference.</p>
         <ul>
         {allSkillPosts.map(p => (
             <li><a href=`/skills/${p.slug}`>{p.data.skillName}</a></li>
@@ -35,19 +38,4 @@ const allSkillPosts = await getCollection('skills');
         </ul>
     </div>
     </body>
-    <style is:inline>
-        .panel {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            margin: 20px;
-            padding: 20px;
-            background-color: #f0f0f0;
-            opacity: 0.8;
-            border: thin red solid;
-
-            p {
-                font-size: larger;
-                line-height: 1.5;
-            }
-        }
-    </style>
 </html>
