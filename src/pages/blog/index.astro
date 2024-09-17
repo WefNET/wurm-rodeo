@@ -2,6 +2,7 @@
 import Header from './../../layout/header.astro'
 
 import '../../styles/wurm.styles.css'
+import "../../styles/post.styles.scss";
 
 import { getCollection, getEntry } from 'astro:content';
 
@@ -25,7 +26,7 @@ const allBlogPosts = await getCollection('blog');
 	<body>
     <Header title="Blog" />
 
-    <div class="panel">
+    <div class="blog-panel">
       <h1 class="satisfy-regular">Blog</h1>
       <ul>
         {allBlogPosts.map(p => (
@@ -34,19 +35,4 @@ const allBlogPosts = await getCollection('blog');
       </ul>
     </div>
   </body>
-  <style is:inline>
-          .panel {
-              font-family: Verdana, Geneva, Tahoma, sans-serif;
-              margin: 20px;
-              padding: 20px;
-              background-color: #f0f0f0;
-              opacity: 0.8;
-              border: thin red solid;
-
-              p {
-                  font-size: larger;
-                  line-height: 1.5;
-              }
-          }
-  </style>
 </html>
