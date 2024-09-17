@@ -27,5 +27,5 @@ jobs:
      uses: docker/build-push-action@v2
      with:
        push: true
-       tags: ${{ secrets.USERNAME }}/project:latest
+       tags: ${{ secrets.USERNAME }}/free-repo:wurm-rodeo-web
        file: ./Dockerfile.prod
