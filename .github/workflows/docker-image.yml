@@ -28,4 +28,4 @@ jobs:
      with:
        push: true
        tags: ${{ secrets.USERNAME }}/free-repo:wurm-rodeo-web
-       file: ./Dockerfile.prod
+       file: ./Dockerfile
