@@ -1,36 +1,38 @@
 ---
-import Header from './../layout/header.astro'
+import Header from "./../layout/header.astro";
+import "../styles/wurm.styles.css";
+import "../styles/post.styles.scss";
+
+import heed from "../images/heed.webp";
+import { Image, Picture } from "astro:assets";
 ---
+
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
-		<title>Wurm Rodeo</title>
-	</head>
-	<body>
-		<Header />
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
+      rel="stylesheet"
+    />
+    <title>Wurm Rodeo</title>
+  </head>
+  <body>
+    <Header />
 
-		<svg width="100%" height="100vh" class="svg-wrapper">
-			<circle cx="800" cy="50%" r="50%" fill="#562A32" />
-			<circle cx="800" cy="50%" r="40%" fill="#E43F45" />
-			<circle cx="800" cy="50%" r="30%" fill="#E7662B" />
-			<circle cx="800" cy="50%" r="20%" fill="#D8B54A" />
-			<circle cx="800" cy="50%" r="10%" fill="white" />
-		</svg>
-
-		<style is:inline>
-			.svg-wrapper {
-				/* background-color: #f0f0f0;
-				border: thin red solid; */
-				position: fixed;
-				top: 40px;
-				opacity: 0.75;
-			}
-		</style>
-	</body>
+    <div class="blog-panel">
+      <h1 class="satisfy-regular">Yeee-haw, Parder!</h1>
+	  <Picture src={heed} formats={['avif', 'webp']} alt="Stuck in the oak." />
+	  <p>
+		Oh, we've really outdone ourselves with this site for you—because clearly, this is the only thing you could possibly want. We're just certain you'll absolutely adore it, just like everyone else!
+	  </p>
+	  <p>
+		Could someone help get outta this freaking oak tree?
+	  </p>
+    </div>
+  </body>
 </html>

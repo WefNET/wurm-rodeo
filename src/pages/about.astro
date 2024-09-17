@@ -2,6 +2,7 @@
 import Header from './../layout/header.astro'
 
 import '../styles/wurm.styles.css'
+import "../styles/post.styles.scss";
 
 ---
 <html lang="en">
@@ -18,47 +19,23 @@ import '../styles/wurm.styles.css'
 	<body>
 		<Header />
 
-        <div class="panel">
+        <div class="blog-panel">
             <h1 class="satisfy-regular">About</h1>
             <p>I'm Jackjones, and I've been playing Wurm Online since 30 July 2014. It was love at first sight! I settled on Xanadu, near Summerholt, and I'm still <a href="https://xanadu.yaga.host/#6963,2143" target="_blank">here</a>. For a while I was a managing member of the NEXA Alliance, but I left with friends a few years ago to seek a more drama-free existance. I run an "Arrested Development" themed deed called "Bleu Bayou".</p>
             </p>
         </div>
 
-        <div class="panel">
+        <div class="blog-panel">
             <p>Over the years, I've built a number of custom web sites and a phone app for the Wurm Online community: Jack's Wurm Tools (Android), Jack's Web Tools, WurmServices.Net, nexa.family, wurmonlinemaps.com. All of these projects are now lost to time... wurm.rodeo is my next Wurm themed domain and was purchased because it was only $7 a year!</p>
         </div>
 
-        <div class="panel">
+        <div class="blog-panel">
             <p>In real life I'm a web tech lead for a global manufacturer. My wife and I are raising 2 sons in the suburbs of Chicago.</p>
         </div>
 
-        <div class="panel">
+        <div class="blog-panel">
             <h1 class="satisfy-regular">Note</h1>
             <p>Wurm Rodeo is a NOT part of Wurm Online and is NOT a creation of Code Club AB.</p>
         </div>
-
-		<style is:inline>
-			.svg-wrapper {
-				/* background-color: #f0f0f0;
-				border: thin red solid; */
-				position: fixed;
-				top: 40px;
-				opacity: 0.75;
-			}
-
-            .panel {
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-                margin: 20px;
-                padding: 20px;
-                background-color: #f0f0f0;
-                opacity: 0.8;
-                border: thin red solid;
-
-                p {
-                    font-size: larger;
-                    line-height: 1.5;
-                }
-            }
-		</style>
 	</body>
 </html>
