@@ -1,10 +1,13 @@
 ---
 import Header from "./../layout/header.astro";
+import Fonter from "./../layout/fonter.astro";
 import "../styles/wurm.styles.css";
 import "../styles/post.styles.scss";
 
 import heed from "../images/heed.webp";
 import { Image, Picture } from "astro:assets";
+
+
 ---
 
 <html lang="en">
@@ -13,12 +16,7 @@ import { Image, Picture } from "astro:assets";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
-      rel="stylesheet"
-    />
+    <Fonter />
     <title>Wurm Rodeo</title>
   </head>
   <body>
