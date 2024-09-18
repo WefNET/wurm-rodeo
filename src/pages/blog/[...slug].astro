@@ -20,8 +20,6 @@ import "../../styles/wurm.styles.css";
 import "../../styles/post.styles.scss";
 ---
 
-<AstroSeo title="Wurm Rodeo" description="We're gettin' off on Wurm Online." />
-
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -30,6 +28,7 @@ import "../../styles/post.styles.scss";
     <meta name="generator" content={Astro.generator} />
     <Fonter />
     <title>Wurm Rodeo: {entry.data.title}</title>
+    <AstroSeo title="Wurm Rodeo" description="We're gettin' off on Wurm Online." />
   </head>
   <body>
     <Header title="Blog" />
