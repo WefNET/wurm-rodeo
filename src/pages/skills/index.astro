@@ -11,8 +11,10 @@ import { getCollection } from 'astro:content';
 // Requires the name of the collection as an argument.
 // Example: retrieve `src/content/blog/**`
 const allSkillPosts = await getCollection('skills');
+allSkillPosts.sort((a, b) => a.data.skillName.localeCompare(b.data.skillName));
 
-allSkillPosts.sort((a, b) => a.data.skillName.localeCompare(b.data.skillName))
+const topSkills = allSkillPosts.filter(s => s.data.isTopList === true);
+const bottomSkills = allSkillPosts.filter(s => s.data.isTopList === false);
 ---
 
 <html lang="en">
@@ -30,8 +32,21 @@ allSkillPosts.sort((a, b) => a.data.skillName.localeCompare(b.data.skillName))
     <div class="blog-panel">
         <h1 class="satisfy-regular">Skill Guides</h1>
         <p>With over 10 years of experience in Wurm Online, I have curated several skilling and grinding guides for your reference.</p>
+        
+        {topSkills.length > 0 && 
+        <h3>
+            Common / Advanced Topics
+        </h3>
         <ul>
-        {allSkillPosts.map(p => (
+            {topSkills.map(skill => (
+                <li><a href=`/skills/${skill.slug}`>{skill.data.skillName}</a></li>
+            ))}
+        </ul>
+        }
+
+        <h3>Individual Guides</h3>
+        <ul>
+        {bottomSkills.map(p => (
             <li><a href=`/skills/${p.slug}`>{p.data.skillName}</a></li>
         ))}
         </ul>

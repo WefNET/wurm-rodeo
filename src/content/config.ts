@@ -20,7 +20,8 @@ const skillingCollection = defineCollection({
       image: z.string().optional(),
       author: z.string(),
       authorLink: z.string().optional(),
-      published: z.date()
+      published: z.date(),
+      isTopList: z.boolean()
     })
 
 })
