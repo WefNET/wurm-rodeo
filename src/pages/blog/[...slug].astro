@@ -14,10 +14,13 @@ const { Content } = await entry.render();
 
 import Header from "./../../layout/header.astro";
 import Fonter from "./../../layout/fonter.astro";
+import { AstroSeo } from "@astrolib/seo";
 
 import "../../styles/wurm.styles.css";
 import "../../styles/post.styles.scss";
 ---
+
+<AstroSeo title="Wurm Rodeo" description="We're gettin' off on Wurm Online." />
 
 <html lang="en">
   <head>
