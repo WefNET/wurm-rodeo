@@ -17,6 +17,8 @@ import Fonter from "./../../layout/fonter.astro";
 
 import "../../styles/wurm.styles.css";
 import "../../styles/post.styles.scss";
+import { AstroSeo } from "@astrolib/seo";
+
 ---
 
 <html lang="en">
@@ -27,6 +29,7 @@ import "../../styles/post.styles.scss";
     <meta name="generator" content={Astro.generator} />
     <Fonter />
     <title>Wurm Rodeo</title>
+    <AstroSeo description={entry.data.seoDescription}/>
   </head>
   <body>
     <Header title="Skills" />

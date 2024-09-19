@@ -17,6 +17,7 @@ const skillingCollection = defineCollection({
   type: 'content',
     schema: z.object({
       skillName: z.string(),
+      seoDescription: z.string(),
       image: z.string().optional(),
       author: z.string(),
       authorLink: z.string().optional(),
