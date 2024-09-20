@@ -3,7 +3,7 @@ body {
     background-repeat: no-repeat;
     background-position-x: right;
     background-attachment: fixed;
-    background-size: contain;
+    /* background-size: contain; */
 }
 
 .satisfy-regular {

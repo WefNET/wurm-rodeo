@@ -1,0 +1,76 @@
+---
+import Header from "../../layout/header.astro";
+import Fonter from "../../layout/fonter.astro";
+
+import "../../styles/wurm.styles.css";
+import "../../styles/post.styles.scss";
+
+import { getCollection } from "astro:content";
+const sales = await getCollection("sales");
+
+const cocCasts = sales.filter(s =>
+    s.data.castsRecord.some(record => 'CoC' in record)
+);
+
+const costCalc = (cost: number) => {
+    if (cost > 10000) {
+        return `${cost / 10000} silver`
+    } 
+    else if (cost > 100) {
+        return `${cost / 100} copper`
+    }
+}
+
+const wr = (o: any) => {
+    console.log(o);
+}
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <Fonter />
+    <title>Wurm Rodeo</title>
+  </head>
+  <body>
+    <Header title="Sales" />
+
+    <div class="blog-panel">
+      <h1 class="satisfy-regular">Sales</h1>
+      <p>
+        I make stuff, sell stuff, can make more stuff, will make more stuff, will sell you someofmy stuff...
+      </p>
+
+      <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <!-- <th>Casts</th> -->
+                <th>Cost</th>
+                <th>Categories</th>
+                <th>Casts</th>
+            </tr>
+        </thead>
+        <tbody>
+            {sales.map(p => (
+            <tr>
+                <td>{p.data.name}</td>
+                {/* <td>{p.data.casts.join(', ')}</td> */}
+                <td>{costCalc(p.data.cost)}</td>
+                <td>{p.data.categories.join(' | ')}</td>
+                <td>
+                    {p.data.castsRecord.map(record => 
+                        Object.entries(record).map(([key, value]) => `${key} ${value} `)
+                    )}
+                </td>
+            </tr>
+            ))}
+        </tbody>
+    </table>
+      
+    </div>
+ </body>
+</html>
