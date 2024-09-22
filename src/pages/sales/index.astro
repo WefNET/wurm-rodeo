@@ -60,7 +60,7 @@ const wr = (o: any) => {
                 <td>{p.data.name}</td>
                 {/* <td>{p.data.casts.join(', ')}</td> */}
                 <td>{costCalc(p.data.cost)}</td>
-                <td>{p.data.categories.join(' | ')}</td>
+                <td>{p.data.category.join(' | ')}</td>
                 <td>
                     {p.data.castsRecord.map(record => 
                         Object.entries(record).map(([key, value]) => `${key} ${value} `)

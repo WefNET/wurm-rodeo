@@ -1,0 +1,38 @@
+---
+import { isTemplateSpan } from "typescript";
+
+const { item } = Astro.props;
+
+const rarityType = () => {
+  if (item.rarity === 1) {
+    return "Rare ";
+  }
+
+  if (item.rarity === 2) {
+    return "Supreme ";
+  }
+};
+
+const casts = () => {
+  const castsArray = item.castsRecord.map(
+    (record: { [s: string]: unknown } | ArrayLike<unknown>) =>
+      Object.entries(record).map(([key, value]) => `${key} ${value} `)
+  );
+
+  return castsArray;
+};
+
+const costCalc = () => {
+  if (item.cost > 10000) {
+    return `${item.cost / 10000} silver`;
+  } else if (item.cost > 100) {
+    return `${item.cost / 100} copper`;
+  }
+};
+---
+
+<li>
+  {rarityType()}{item.name} ({item.material}), {casts()} for {costCalc()}, {
+    item.description
+  }
+</li>

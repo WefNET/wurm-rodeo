@@ -1,0 +1,23 @@
+---
+const allSales = await Astro.glob('./../../../content/sales/*.mdx');
+
+export async function getStaticPaths() {
+  return [
+    { params: { category: "Carpentry Tools" } },
+    { params: { category: "Mallet" } },
+    { params: { category: "Carving Knife" } },
+  ];
+}
+
+const { category } = Astro.params;
+const filteredPosts = allSales.filter((sale) => sale.frontmatter.category?.includes(category));
+
+import SalesListItem from '../../../layout/saleListItem.astro';
+---
+  <p>Posts tagged with {category}</p>
+
+  <ul>
+    {filteredPosts.map((post) => 
+      <SalesListItem item={post.frontmatter} />
+    )}
+  </ul>

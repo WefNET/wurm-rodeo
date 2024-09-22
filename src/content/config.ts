@@ -1,4 +1,5 @@
 // 1. Import utilities from `astro:content`
+import type { categoryLabel } from 'astro/runtime/client/dev-toolbar/apps/audit/rules/index.js';
 import { z, defineCollection } from 'astro:content';
 
 // 2. Define a `type` and `schema` for each collection
@@ -31,11 +32,12 @@ const salesCollection = defineCollection({
   schema: z.object({
     name: z.string(),
     material: z.string(),
+    rarity: z.number().optional(),
     description: z.string().optional(),
-    categories: z.array(z.string()),
-    casts: z.array(z.string()),
+    category: z.array(z.string()),
     castsRecord: z.array(z.record(z.string(), z.number())),
-    cost: z.number()
+    cost: z.number(),
+    storageLocation: z.string().optional()
   })
 })
 
