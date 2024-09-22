@@ -30,13 +30,14 @@ const skillingCollection = defineCollection({
 const salesCollection = defineCollection({
   type: 'content',
   schema: z.object({
+    id : z.number(),
     name: z.string(),
     material: z.string(),
     ql: z.number(),
     rarity: z.number().optional(),
     description: z.string().optional(),
     category: z.array(z.string()),
-    castsRecord: z.array(z.record(z.string(), z.number())),
+    castsRecord: z.array(z.record(z.string(), z.number())).optional(),
     cost: z.number(),
     storageLocation: z.string().optional()
   })

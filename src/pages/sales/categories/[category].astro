@@ -1,27 +1,31 @@
 ---
-// import Base from './../../../layout/'
+import Base from "../../../layout/Baselayout.astro";
+import SalesListItem from "../../../layout/saleListItem.astro";
 
-const allSales = await Astro.glob('./../../../content/sales/*.mdx');
+import '../../../styles/post.styles.scss';
+
+const allSales = await Astro.glob("./../../../content/sales/*.mdx");
 
 export async function getStaticPaths() {
   return [
     { params: { category: "Carpentry Tools" } },
-    { params: { category: "Mallet" } },
-    { params: { category: "Carving Knife" } },
+    { params: { category: "General Tools" } },
+    { params: { category: "Horse Gear" } },
   ];
 }
 
-
-
 const { category } = Astro.params;
-const filteredPosts = allSales.filter((sale) => sale.frontmatter.category?.includes(category));
-
-import SalesListItem from '../../../layout/saleListItem.astro';
+const filteredPosts = allSales.filter((sale) =>
+  sale.frontmatter.category?.includes(category)
+);
 ---
-  <p>Posts tagged with {category}</p>
 
-  <ul>
-    {filteredPosts.map((post) =>
-      <SalesListItem item={post.frontmatter} />
-    )}
-  </ul>
+<Base>
+  <div class="blog-panel">
+    <h1 class="satisfy-regular">Posts tagged with {category}</h1>
+
+    <ul>
+      {filteredPosts.map((post) => <SalesListItem item={post.frontmatter} />)}
+    </ul>
+  </div>
+</Base>

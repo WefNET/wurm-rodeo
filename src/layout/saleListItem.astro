@@ -14,7 +14,7 @@ const rarityType = () => {
 };
 
 const casts = () => {
-  const castsArray = item.castsRecord.map(
+  const castsArray = item.castsRecord?.map(
     (record: { [s: string]: unknown } | ArrayLike<unknown>) =>
       Object.entries(record).map(([key, value]) => `${key} ${value} `)
   );

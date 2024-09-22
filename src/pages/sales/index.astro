@@ -9,7 +9,7 @@ import { getCollection } from "astro:content";
 const sales = await getCollection("sales");
 
 const cocCasts = sales.filter(s =>
-    s.data.castsRecord.some(record => 'CoC' in record)
+    s.data.castsRecord?.some(record => 'CoC' in record)
 );
 
 const costCalc = (cost: number) => {
@@ -48,7 +48,7 @@ const wr = (o: any) => {
         <thead>
             <tr>
                 <th>Name</th>
-                <!-- <th>Casts</th> -->
+                <th>QL</th>
                 <th>Cost</th>
                 <th>Categories</th>
                 <th>Casts</th>
@@ -57,12 +57,12 @@ const wr = (o: any) => {
         <tbody>
             {sales.map(p => (
             <tr>
-                <td>{p.data.name}</td>
-                {/* <td>{p.data.casts.join(', ')}</td> */}
+                <td>{p.data.name} ({p.data.material})</td>
+                <td>{p.data.ql}</td>
                 <td>{costCalc(p.data.cost)}</td>
                 <td>{p.data.category.join(' | ')}</td>
                 <td>
-                    {p.data.castsRecord.map(record => 
+                    {p.data.castsRecord?.map(record => 
                         Object.entries(record).map(([key, value]) => `${key} ${value} `)
                     )}
                 </td>
