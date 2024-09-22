@@ -1,5 +1,5 @@
 ---
-import Base from "../../layout/Baselayout.astro";
+import Base from "../../layout/BaseLayout.astro";
 
 import { getCollection } from "astro:content";
 const sales = await getCollection("sales");
@@ -34,7 +34,7 @@ const costCalc = (cost: number) => {
           sales.map((p) => (
             <tr>
               <td>
-                {p.data.name} ({p.data.material})
+                {p.data.rarity === 1 ? 'Rare' : ''} {p.data.name} ({p.data.material})
               </td>
               <td>{p.data.ql}</td>
               <td>

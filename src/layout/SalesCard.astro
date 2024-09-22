@@ -1,0 +1,76 @@
+---
+const { sales } = Astro.props;
+
+const costCalc = (cost: number) => {
+  if (cost > 10000) {
+    return `${cost / 10000} silver`;
+  } else if (cost > 100) {
+    return `${cost / 100} copper`;
+  }
+};
+---
+
+<div class="card-container">
+  {
+    sales.map((p: { data: { name: unknown; rarity: number; material: unknown; ql: unknown; castsRecord: any[]; category: any[]; cost: any; }; }) => (
+      <div class="card">
+        <div class="card-header">
+          <h3>
+            {p.data.rarity === 1 ? "Rare" : ""} {p.data.name} ({p.data.material}
+            )
+          </h3>
+        </div>
+        <div class="card-body">
+          <div>
+            <strong>QL: </strong> {p.data.ql}
+          </div>
+          <div>
+            <strong>Casts: </strong>
+            {p.data.castsRecord?.map((record) =>
+                  Object.entries(record).map(
+                    ([key, value]) => `${key} ${value} `
+                  )
+                )}
+                  <br />
+          </div>
+          <div>
+            <strong>Categories: </strong> {p.data.category.join(" | ")}
+          </div>
+          <div>
+            <strong>Cost: </strong> {costCalc(p.data.cost)}
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<style is:inline>
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px; /* Adjust based on your design */
+  }
+
+  .card-header h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .card-body div {
+    margin-bottom: 8px;
+  }
+
+  .card-body strong {
+    font-weight: bold;
+  }
+</style>
