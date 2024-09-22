@@ -18,9 +18,12 @@ const { category } = Astro.params;
 const filteredPosts = allSales.filter((sale) =>
   sale.frontmatter.category?.includes(category)
 );
+
+const catTitle = `${category}`;
+const catSeo = `Sales Category - ${category} from Jackjones`;
 ---
 
-<Base>
+<Base title={catTitle} seoDescription={catSeo}>
   <div class="blog-panel">
     <h1 class="satisfy-regular">Posts tagged with {category}</h1>
 

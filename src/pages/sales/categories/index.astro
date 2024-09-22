@@ -1,20 +1,29 @@
 ---
+import Base from "../../../layout/Baselayout.astro";
+
+import '../../../styles/post.styles.scss';
+
 const allPosts = await Astro.glob("../../../content/sales/*.mdx");
-const tags = [...new Set(allPosts.map((post) => post.frontmatter.category).flat())];
-const pageTitle = "Tag Index";
+const tags = [
+  ...new Set(allPosts.map((post) => post.frontmatter.category).flat()),
+];
 ---
+<Base title="Sales Categories">
+  <div class="blog-panel">
+    <h1 class="satisfy-regular">Sales Categories</h1>
+    <div class="tags">
+      {
+        tags.map((tag) => (
+          <p class="tag">
+            <a href={`/sales/categories/${tag}`}>{tag}</a>
+          </p>
+        ))
+      }
+    </div>
+  </div>
+</Base>
 
-<div class="tags">
-  {
-    tags.map((tag) => (
-      <p class="tag">
-        <a href={`/sales/categories/${tag}`}>{tag}</a>
-      </p>
-    ))
-  }
-</div>
-
-<style>
+<style is:inline>
   a {
     color: #00539f;
   }
