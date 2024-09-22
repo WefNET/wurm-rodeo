@@ -23,7 +23,7 @@ const catSeo = `Sales Category - ${category} from Jackjones`;
 
 <Base title={catTitle} seoDescription={catSeo}>
   <div class="blog-panel">
-    <h1 class="satisfy-regular">Posts tagged with {category}</h1>
+    <h1 class="satisfy-regular">{category}</h1>
 
     <ul>
       {filteredPosts.map((post) => <SalesListItem item={post.frontmatter} />)}
