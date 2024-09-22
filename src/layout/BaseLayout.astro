@@ -1,0 +1,26 @@
+---
+import Header from "./header.astro";
+import Fonter from "./fonter.astro";
+import { AstroSeo } from "@astrolib/seo";
+
+import "../../styles/wurm.styles.css";
+import "../../styles/post.styles.scss";
+
+const { title, seoDescription } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <Fonter />
+    <title>Wurm Rodeo: {title}</title>
+    <AstroSeo description={seoDescription} />
+  </head>
+  <body>
+    <Header />
+    <slot />
+  </body>
+</html>

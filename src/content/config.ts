@@ -32,6 +32,7 @@ const salesCollection = defineCollection({
   schema: z.object({
     name: z.string(),
     material: z.string(),
+    ql: z.number(),
     rarity: z.number().optional(),
     description: z.string().optional(),
     category: z.array(z.string()),
