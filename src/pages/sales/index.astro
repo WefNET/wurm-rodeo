@@ -4,22 +4,12 @@ import SalesCard from "../../layout/SalesCard.astro";
 
 import { getCollection } from "astro:content";
 const sales = await getCollection("sales");
-
-const costCalc = (cost: number) => {
-  if (cost > 10000) {
-    return `${cost / 10000} silver`;
-  } else if (cost > 100) {
-    return `${cost / 100} copper`;
-  }
-};
 ---
-
 <Base title="Sales by Jackjones">
   <div class="blog-panel">
     <h1 class="satisfy-regular">Sales</h1>
     <p>
-      I make stuff, sell stuff, can make more stuff, will make more stuff, will
-      sell you someofmy stuff...
+      View <a href="/sales/categories">categories.</a>
     </p>
     <SalesCard sales={sales} />
   </div>
