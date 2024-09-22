@@ -12,36 +12,54 @@ const costCalc = (cost: number) => {
 
 <div class="card-container">
   {
-    sales.map((p: { data: { name: unknown; rarity: number; material: unknown; ql: unknown; castsRecord: any[]; category: any[]; cost: any; }; }) => (
-      <div class="card">
-        <div class="card-header">
-          <h3>
-            {p.data.rarity === 1 ? "Rare" : ""} {p.data.name} ({p.data.material}
-            )
-          </h3>
+    sales.map(
+      (p: {
+        data: {
+          [x: string]: unknown;
+          name: unknown;
+          rarity: number;
+          material: unknown;
+          ql: unknown;
+          castsRecord: any[];
+          category: any[];
+          cost: any;
+        };
+      }) => (
+        <div class="card">
+          {p.data.rarity === 1 && (
+            <div class="ribbon">
+              <span class="ribbon-text">Rare</span>
+            </div>
+          )}
+          <div class="card-header">
+            <h3>
+              {p.data.rarity === 1 ? 'Rare' : ''} {p.data.name} ({p.data.material})
+            </h3>
+          </div>
+          <div class="card-body">
+            <div>
+              <strong>QL: </strong> {p.data.ql}
+            </div>
+            <div>
+              <strong>Casts: </strong>
+              {p.data.castsRecord?.map((record) =>
+                Object.entries(record).map(([key, value]) => `${key} ${value} `)
+              )}
+              <br />
+            </div>
+            <div>
+              <strong>Categories: </strong> {p.data.category.join(" | ")}
+            </div>
+            <div>
+              <strong>Cost: </strong> {costCalc(p.data.cost)}
+            </div>
+            <div>
+              {p.data.description}
+            </div>
+          </div>
         </div>
-        <div class="card-body">
-          <div>
-            <strong>QL: </strong> {p.data.ql}
-          </div>
-          <div>
-            <strong>Casts: </strong>
-            {p.data.castsRecord?.map((record) =>
-                  Object.entries(record).map(
-                    ([key, value]) => `${key} ${value} `
-                  )
-                )}
-                  <br />
-          </div>
-          <div>
-            <strong>Categories: </strong> {p.data.category.join(" | ")}
-          </div>
-          <div>
-            <strong>Cost: </strong> {costCalc(p.data.cost)}
-          </div>
-        </div>
-      </div>
-    ))
+      )
+    )
   }
 </div>
 
@@ -50,15 +68,40 @@ const costCalc = (cost: number) => {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
+    justify-content: center;
   }
 
   .card {
+    position: relative; /* Enable positioning for the ribbon */
     background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
     padding: 16px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 250px; /* Adjust based on your design */
+    width: 250px;
+    overflow: hidden;
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+  }
+
+  /* Ribbon styling */
+  .ribbon {
+    position: absolute;
+    top: 2px;
+    right: -42px;
+    width: 145px;
+    height: 30px;
+    background-color: #4299E0; /* Solid color for the ribbon */
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    transform: rotate(45deg); /* Rotate for diagonal effect */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .ribbon-text {
+    position: relative;
+    right: -10px; /* Center the text horizontally */
   }
 
   .card-header h3 {

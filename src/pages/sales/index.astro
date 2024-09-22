@@ -1,5 +1,6 @@
 ---
 import Base from "../../layout/BaseLayout.astro";
+import SalesCard from "../../layout/SalesCard.astro";
 
 import { getCollection } from "astro:content";
 const sales = await getCollection("sales");
@@ -12,44 +13,14 @@ const costCalc = (cost: number) => {
   }
 };
 ---
+
 <Base title="Sales by Jackjones">
   <div class="blog-panel">
     <h1 class="satisfy-regular">Sales</h1>
     <p>
-      I make stuff, sell stuff, can make more stuff, will make more stuff, will sell you someofmy stuff...
+      I make stuff, sell stuff, can make more stuff, will make more stuff, will
+      sell you someofmy stuff...
     </p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>QL</th>
-          <th>Casts</th>
-          <th>Categories</th>
-          <th>Cost</th>
-        </tr>
-      </thead>
-      <tbody>
-        {
-          sales.map((p) => (
-            <tr>
-              <td>
-                {p.data.rarity === 1 ? 'Rare' : ''} {p.data.name} ({p.data.material})
-              </td>
-              <td>{p.data.ql}</td>
-              <td>
-                {p.data.castsRecord?.map((record) =>
-                  Object.entries(record).map(
-                    ([key, value]) => `${key} ${value} `
-                  )
-                )}
-              </td>
-              <td>{p.data.category.join(" | ")}</td>
-              <td>{costCalc(p.data.cost)}</td>
-            </tr>
-          ))
-        }
-      </tbody>
-    </table>
+    <SalesCard sales={sales} />
   </div>
 </Base>
