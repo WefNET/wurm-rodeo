@@ -6,9 +6,9 @@ const allSales = await Astro.glob("./../../../content/sales/*.mdx");
 
 export async function getStaticPaths() {
   return [
-    { params: { category: "Carpentry Tools" } },
     { params: { category: "General Tools" } },
     { params: { category: "Horse Gear" } },
+    { params: { category: "Carpentry Tools" } },
   ];
 }
 
