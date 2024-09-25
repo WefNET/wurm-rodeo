@@ -6,6 +6,7 @@ import '../../styles/wurm.styles.css';
 import "../../styles/post.styles.scss";
 
 import { getCollection } from 'astro:content';
+import { preprocess } from 'astro:schema';
 
 // Get all entries from a collection.
 // Requires the name of the collection as an argument.
@@ -15,6 +16,8 @@ allSkillPosts.sort((a, b) => a.data.skillName.localeCompare(b.data.skillName));
 
 const topSkills = allSkillPosts.filter(s => s.data.isTopList === true);
 const bottomSkills = allSkillPosts.filter(s => s.data.isTopList === false);
+
+const skillUrl = (skill: string) => { return `/skills/${skill}`; }
 ---
 
 <html lang="en">
@@ -33,13 +36,13 @@ const bottomSkills = allSkillPosts.filter(s => s.data.isTopList === false);
         <h1 class="satisfy-regular">Skill Guides</h1>
         <p>With over 10 years of experience in Wurm Online, I have curated several skilling and grinding guides for your reference.</p>
 
-        {topSkills.length > 0 && 
+        {topSkills.length > 0 &&
         <h3>
-            Common / Advanced Topics
+            Advanced Topics
         </h3>
         <ul>
             {topSkills.map(skill => (
-                <li><a href=`/skills/${skill.slug}`>{skill.data.skillName}</a></li>
+                <li><a href={skillUrl(skill.slug)}>{skill.data.skillName}</a></li>
             ))}
         </ul>
         }
@@ -47,7 +50,7 @@ const bottomSkills = allSkillPosts.filter(s => s.data.isTopList === false);
         <h3>Individual Guides</h3>
         <ul>
         {bottomSkills.map(p => (
-            <li><a href=`/skills/${p.slug}`>{p.data.skillName}</a></li>
+            <li><a href={skillUrl(p.slug)}>{p.data.skillName}</a></li>
         ))}
         </ul>
     </div>
