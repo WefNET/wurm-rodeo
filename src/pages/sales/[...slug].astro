@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+
+import Base from "../../layout/BaseLayout.astro";
+import SalesCard from "../../layout/SalesCard.astro";
+
+export async function getStaticPaths() {
+  const skillEntries = await getCollection("sales");
+  return skillEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const fakeEntries: any[] = [];
+
+fakeEntries.push(entry);
+---
+
+<Base title={entry.data.name} seoDescription={entry.data.description}>
+  <div class="blog-panel">
+    <SalesCard sales={fakeEntries} />
+
+    <p>
+      /tell Jackjones hey man, I wanna buy that sweet {entry.data.name} (#{
+        entry.slug
+      })!
+    </p>
+
+    <p>
+      /tell Jackjones dude, I must have that {entry.data.name} (#{entry.slug})!
+    </p>
+
+    <p>
+      /tell Jackjones GTFO!, COD that {entry.data.name} (#{entry.slug}) right
+      now!
+    </p>
+  </div>
+  <Content />
+</Base>

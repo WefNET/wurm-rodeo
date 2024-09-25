@@ -16,6 +16,7 @@ const costCalc = (cost: number) => {
       (p: {
         data: {
           [x: string]: unknown;
+          slug: string,
           name: unknown;
           rarity: number;
           material: unknown;
@@ -23,7 +24,8 @@ const costCalc = (cost: number) => {
           castsRecord: any[];
           category: any[];
           cost: any;
-        };
+        },
+        slug: string;
       }) => (
         <div class="card">
           {p.data.rarity === 1 && (
@@ -33,7 +35,9 @@ const costCalc = (cost: number) => {
           )}
           <div class="card-header">
             <h3>
-              {p.data.rarity === 1 ? 'Rare' : ''} {p.data.name} ({p.data.material})
+              <a href=`/sales/${p.slug}`>
+                {p.data.rarity === 1 ? 'Rare' : ''} {p.data.name} ({p.data.material})
+              </a>
             </h3>
           </div>
           <div class="card-body">
