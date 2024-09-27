@@ -17,5 +17,9 @@
     "astro-font": "^0.1.81",
     "sass": "^1.78.0",
     "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }

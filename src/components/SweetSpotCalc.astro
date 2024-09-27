@@ -4,8 +4,8 @@
   const calc = () => {
     const skillInput = document.getElementById("skill") as HTMLInputElement;
     if (skillInput) {
-        const skillValue = parseFloat(skillInput.value) || 0; // Convert to number, default to 0 if invalid
-        sweetSpot = (skillValue * 0.77) + 23;
+      const skillValue = parseFloat(skillInput.value) || 0; // Convert to number, default to 0 if invalid
+      sweetSpot = skillValue * 0.77 + 23;
 
       const sweetSpotElement = document.getElementById("sweet-spot");
       if (sweetSpotElement) {
@@ -23,6 +23,12 @@
 </script>
 
 <div style="border:1px solid gray; padding:10px;">
-  Sweet Spot Calculator, enter skill: <input id="skill" type="number" min="0" max="100" step="1" />
-  <span id="sweet-spot"></span>
+  Sweet Spot Calculator, enter skill: <input
+    id="skill"
+    type="number"
+    min="0"
+    max="100"
+    step="1"
+  />
+  &nbsp;Sweet Spot: <span id="sweet-spot"></span>
 </div>
