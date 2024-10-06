@@ -1,0 +1,21 @@
+---
+const { title, link, pubDate } = Astro.props;
+
+const dateOptions: object = {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+};
+
+const formattedPublishDate = new Date(pubDate).toLocaleDateString("en-US", dateOptions);
+
+import "../styles/postTile.styles.scss";
+---
+
+<div class="post-tile">
+  <p>
+    <a href={link} title={title}>{title}</a>
+  </p>
+
+  {formattedPublishDate}
+</div>

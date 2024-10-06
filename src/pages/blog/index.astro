@@ -6,11 +6,19 @@ import '../../styles/wurm.styles.css';
 import "../../styles/post.styles.scss";
 
 import { getCollection } from 'astro:content';
+import PostTile from '../../components/PostTile.astro';
 
 // Get all entries from a collection.
 // Requires the name of the collection as an argument.
 // Example: retrieve `src/content/blog/**`
 const allBlogPosts = await getCollection('blog');
+
+// sort desc
+allBlogPosts.sort(
+  (a, b) =>
+    Date.parse(b.data.published) - Date.parse(a.data.published)
+);
+
 ---
 
 <html lang="en">
@@ -27,11 +35,11 @@ const allBlogPosts = await getCollection('blog');
 
     <div class="blog-panel">
       <h1 class="satisfy-regular">Blog</h1>
-      <ul>
+      <div style="display: flex; flex-wrap: wrap;">
         {allBlogPosts.map(p => (
-          <li><a href=`/blog/${p.slug}`>{p.data.title}</a></li>
+          <PostTile title={p.data.title} link={`/blog/${p.slug}`} pubDate={p.data.published}> </PostTile>
         ))}
-      </ul>
+      </div>
     </div>
   </body>
 </html>
