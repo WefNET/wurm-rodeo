@@ -14,11 +14,7 @@ import PostTile from '../../components/PostTile.astro';
 const allBlogPosts = await getCollection('blog');
 
 // sort desc
-allBlogPosts.sort(
-  (a, b) =>
-    Date.parse(b.data.published) - Date.parse(a.data.published)
-);
-
+allBlogPosts.sort((a, b) => new Date(b.data.published).getTime() - new Date(a.data.published).getTime());
 ---
 
 <html lang="en">

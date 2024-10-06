@@ -1,5 +1,4 @@
 // 1. Import utilities from `astro:content`
-import type { categoryLabel } from 'astro/runtime/client/dev-toolbar/apps/audit/rules/index.js';
 import { z, defineCollection } from 'astro:content';
 
 // 2. Define a `type` and `schema` for each collection
