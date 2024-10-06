@@ -4,10 +4,10 @@ tags: ['random']
 author: Jackjones
 published: 2024-09-08
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import farm from '../../images/farming.webp';
 
-<Image src={farm} alt="Tending to the garlic." />
+<Picture src={farm} formats={["webp"]} alt="Tending to the garlic." />
 
 Caption: Tending to the garlic.
 
