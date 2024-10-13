@@ -5,11 +5,17 @@ const allPosts = await Astro.glob("../../../content/sales/*.mdx");
 const tags = [
   ...new Set(allPosts.map((post) => post.frontmatter.category).flat()),
 ];
+
+// sort tags alpha
+tags.sort((a, b) => a.localeCompare(b));
 ---
 
 <Base title="Sales Categories">
   <div class="blog-panel">
     <h1 class="satisfy-regular">Sales Categories</h1>
+    <p>
+      View <a href="/sales">all sales.</a>
+    </p>
     <div class="tags">
       {
         tags.map((tag) => (

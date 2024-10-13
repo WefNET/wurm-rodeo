@@ -21,7 +21,13 @@ fakeEntries.push(entry);
 ---
 
 <Base title={entry.data.name} seoDescription={entry.data.description}>
+
   <div class="blog-panel">
+    <div style="display: flex; justify-content: space-between;">
+    <span>&laquo Return to <a href="/sales">sales</a>.</span>
+    <span>&laquo Return to <a href="/sales/categories">categories</a>.</span>
+  </div>
+
     <SalesCard sales={fakeEntries} />
     <Content />
 

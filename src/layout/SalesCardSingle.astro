@@ -1,0 +1,105 @@
+---
+const { post } = Astro.props;
+
+const costCalc = (cost: number) => {
+  if (cost > 10000) {
+    return `${cost / 10000} silver`;
+  } else if (cost > 100) {
+    return `${cost / 100} copper`;
+  }
+};
+---
+
+<div class="card">
+  {
+    post?.frontmatter.rarity === 1 && (
+      <div class="ribbon">
+        <span class="ribbon-text">Rare</span>
+      </div>
+    )
+  }
+  <div class="card-header">
+    <h3>
+      <a href=`/sales/${post?.frontmatter.slug}`>
+        {post?.frontmatter.rarity === 1 ? "Rare" : ""}
+        {post?.frontmatter.name} ({post?.frontmatter.material})
+      </a>
+    </h3>
+  </div>
+  <div class="card-body">
+    <div>
+      <strong>QL: </strong>
+      {post?.frontmatter.ql}
+    </div>
+    <div>
+      <strong>Casts: </strong>
+      {
+        post?.frontmatter.castsRecord?.map((record: any) =>
+          Object.entries(record).map(([key, value]) => `${key} ${value} `)
+        )
+      }
+      <br />
+    </div>
+    <div>
+      <strong>Categories: </strong>
+      {post?.frontmatter.category.join(" | ")}
+    </div>
+    <div>
+      <strong>Cost: </strong>
+      {costCalc(post?.frontmatter.cost)}
+    </div>
+    <div>
+      {post?.frontmatter.description}
+    </div>
+  </div>
+</div>
+
+<style is:inline>
+
+
+  .card {
+    position: relative; /* Enable positioning for the ribbon */
+    background-color: white;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    overflow: hidden;
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+  }
+
+  /* Ribbon styling */
+  .ribbon {
+    position: absolute;
+    top: 2px;
+    right: -42px;
+    width: 145px;
+    height: 30px;
+    background-color: #4299e0; /* Solid color for the ribbon */
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    transform: rotate(45deg); /* Rotate for diagonal effect */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .ribbon-text {
+    position: relative;
+    right: -10px; /* Center the text horizontally */
+  }
+
+  .card-header h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .card-body div {
+    margin-bottom: 8px;
+  }
+
+  .card-body strong {
+    font-weight: bold;
+  }
+</style>

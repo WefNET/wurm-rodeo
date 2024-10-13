@@ -1,15 +1,18 @@
 ---
 import Base from "../../../layout/BaseLayout.astro";
 import SalesListItem from "../../../layout/saleListItem.astro";
+import SalesCard from "../../../layout/SalesCard.astro";
+import SalesCardSingle from "../../../layout/SalesCardSingle.astro";
 
 const allSales = await Astro.glob("./../../../content/sales/*.mdx");
 
 export async function getStaticPaths() {
   return [
+    { params: { category: "Armor" } },
+    { params: { category: "Bowery" } },
+    { params: { category: "Carpentry Tools" } },
     { params: { category: "General Tools" } },
     { params: { category: "Horse Gear" } },
-    { params: { category: "Carpentry Tools" } },
-    { params: { category: "Bowery" } },
   ];
 }
 
@@ -25,9 +28,21 @@ const catSeo = `Sales Category - ${category} from Jackjones`;
 <Base title={catTitle} seoDescription={catSeo}>
   <div class="blog-panel">
     <h1 class="satisfy-regular">{category}</h1>
+    <p>
+      &laquo Return to <a href="/sales/categories">categories</a>.
+    </p>
 
-    <ul>
-      {filteredPosts.map((post) => <SalesListItem item={post.frontmatter} />)}
-    </ul>
+    <div class="card-container">
+      {filteredPosts.map((post) => <SalesCardSingle post={post} />)}
+    </div>
   </div>
 </Base>
+
+<style is:inline>
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+</style>
