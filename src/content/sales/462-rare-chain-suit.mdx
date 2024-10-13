@@ -1,0 +1,25 @@
+---
+slug: "462"
+name: Chain Suit
+rarity: 1
+material: Iron
+ql: 93
+description: Rare, 8-piece (no helm) chain suit, dyed blue
+category: ['Bowery']
+castsRecord: [{'AoSP': 99}]
+cost: 320000
+---
+import { Picture } from 'astro:assets';
+
+import front from '../../images/rare-chain-suit/front.png';
+import back from '../../images/rare-chain-suit/back.png';
+import list from '../../images/rare-chain-suit/list.png';
+
+<div style="display: flex; justify-content: center; margin-top: 16px">
+    <Picture src={front} formats={["webp"]} height="570" alt="Front Rare Chain Suit." />
+    <Picture src={back} formats={["webp"]} height="570" alt="Back Rare Chain Suit." />
+</div>
+
+<div style="display: flex; justify-content: center; margin-top: 16px">
+    <Picture src={list} formats={["webp"]} alt="Item List Rare Chain Suit." />
+</div>
