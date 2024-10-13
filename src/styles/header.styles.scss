@@ -14,6 +14,10 @@ li.li-nav {
     float: left;
 }
 
+li.hamburger {
+    float: right;
+}
+
 li.li-nav a {
     display: block;
     color: white;
@@ -31,4 +35,43 @@ li.li-nav a {
     font-family: "Satisfy", cursive;
     font-weight: 400;
     font-style: normal;
+}
+
+.nav-links {
+    margin-left: 5em;
+    display: none;
+    position: fixed;
+    right: 8px;
+    width: 36%;
+    background: #333;
+    z-index: 200;
+}
+
+.nav-links a {
+    display: inline-block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.expanded {
+    display: block;
+}
+
+@media screen and (min-width: 636px) {
+    li.hamburger,
+    .nav-links {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 636px) {
+    li.hamburger {
+        display: block;
+    }
+
+    .toggled-nav {
+        display: none;
+    }
 }

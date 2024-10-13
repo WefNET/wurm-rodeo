@@ -1,12 +1,30 @@
 ---
-import './../styles/header.styles.scss';
+import "./../styles/header.styles.scss";
+import Hamburger from "./Hamburger.astro";
 ---
+
 <navigation>
-    <ul class="nav">
-        <li class="li-nav satisfy-regular"><a href="/">Wurm Rodeo</a></li>
-        <li class="li-nav satisfy-regular"><a href="/about">About</a></li>
-        <li class="li-nav satisfy-regular"><a href="/blog">Blog</a></li>
-        <li class="li-nav satisfy-regular"><a href="/skills">Skills</a></li>
-        <!-- <li class="li-nav satisfy-regular"><a href="/sales">Sales</a></li> -->
-    </ul>
+  <ul class="nav">
+    <li class="li-nav satisfy-regular"><a href="/">Wurm Rodeo</a></li>
+    <li class="li-nav satisfy-regular toggled-nav">
+      <a href="/about">About</a>
+    </li>
+    <li class="li-nav satisfy-regular toggled-nav"><a href="/blog">Blog</a></li>
+    <li class="li-nav satisfy-regular toggled-nav">
+      <a href="/skills">Skills</a>
+    </li>
+    <li class="li-nav satisfy-regular toggled-nav">
+      <a href="/sales">Sales</a>
+    </li>
+    <li class="li-nav hamburger">
+      <Hamburger />
+    </li>
+  </ul>
 </navigation>
+
+<div class="nav-links">
+  <a href="/about">About</a><br />
+  <a href="/blog">Blog</a><br />
+  <a href="/skills">Skills</a><br />
+  <a href="/sales">Sales</a>
+</div>
