@@ -3,7 +3,11 @@ import Base from "../../layout/BaseLayout.astro";
 import SalesCard from "../../layout/SalesCard.astro";
 
 import { getCollection } from "astro:content";
-const sales = await getCollection("sales");
+const allSales = await getCollection("sales");
+
+const sales = allSales.filter((sale) =>
+  (sale.data.sold === undefined || sale.data.sold === false)
+);
 ---
 <Base title="Sales by Jackjones">
   <div class="blog-panel">

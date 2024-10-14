@@ -37,7 +37,9 @@ const salesCollection = defineCollection({
     category: z.array(z.string()),
     castsRecord: z.array(z.record(z.string(), z.number())).optional(),
     cost: z.number(),
-    storageLocation: z.string().optional()
+    storageLocation: z.string().optional(),
+    sold: z.boolean().optional(),
+    finalPrice: z.number().optional()
   })
 })
 

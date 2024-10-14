@@ -31,15 +31,19 @@ const costCalc = (cost: number) => {
       <strong>QL: </strong>
       {post?.frontmatter.ql}
     </div>
-    <div>
-      <strong>Casts: </strong>
-      {
-        post?.frontmatter.castsRecord?.map((record: any) =>
-          Object.entries(record).map(([key, value]) => `${key} ${value} `)
-        )
-      }
-      <br />
-    </div>
+      <div>
+        <strong>Casts: </strong>
+        {
+          post?.frontmatter.castsRecord?.map((record: any) =>
+            Object.entries(record).map(([key, value]) => `${key} ${value} `)
+          )
+        }
+        {
+          post?.frontmatter.castsRecord == undefined &&
+          <span>None</span>
+        }
+        <br />
+      </div>
     <div>
       <strong>Categories: </strong>
       {post?.frontmatter.category.join(" | ")}

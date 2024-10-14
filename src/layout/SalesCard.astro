@@ -49,6 +49,9 @@ const costCalc = (cost: number) => {
               {p.data.castsRecord?.map((record) =>
                 Object.entries(record).map(([key, value]) => `${key} ${value} `)
               )}
+              {p.data.castsRecord == undefined &&
+                <span>None</span>
+              }
               <br />
             </div>
             <div>

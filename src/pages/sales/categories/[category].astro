@@ -1,4 +1,5 @@
 ---
+import { undefined } from "astro:schema";
 import Base from "../../../layout/BaseLayout.astro";
 import SalesListItem from "../../../layout/saleListItem.astro";
 import SalesCard from "../../../layout/SalesCard.astro";
@@ -18,7 +19,8 @@ export async function getStaticPaths() {
 
 const { category } = Astro.params;
 const filteredPosts = allSales.filter((sale) =>
-  sale.frontmatter.category?.includes(category)
+  sale.frontmatter.category?.includes(category) &&
+  (sale.frontmatter.sold === undefined || sale.frontmatter.sold === false)
 );
 
 const catTitle = `${category}`;
