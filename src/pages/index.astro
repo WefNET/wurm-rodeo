@@ -5,7 +5,7 @@ import "../styles/wurm.styles.css";
 import "../styles/post.styles.scss";
 
 import heed from "../images/heed.webp";
-import { Picture } from "astro:assets";
+import { Image } from "astro:assets";
 ---
 
 <html lang="en">
@@ -22,7 +22,7 @@ import { Picture } from "astro:assets";
 
     <div class="blog-panel">
       <h1 class="satisfy-regular">Yeee-haw, Parder!</h1>
-      <Picture src={heed} formats={["webp"]} alt="Stuck in the oak." />
+      <Image src={heed} format="webp" alt="Stuck in the oak." />
       <p>
         Oh, we've really outdone ourselves with this site for you—because
         clearly, this is the only thing you could possibly want. We're just

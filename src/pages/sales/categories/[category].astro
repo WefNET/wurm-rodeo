@@ -6,6 +6,7 @@ const allSales = await Astro.glob("./../../../content/sales/*.mdx");
 
 export async function getStaticPaths() {
   return [
+    { params: { category: "Alchemy" } },
     { params: { category: "Armor" } },
     { params: { category: "Bowery" } },
     { params: { category: "Carpentry Tools" } },
