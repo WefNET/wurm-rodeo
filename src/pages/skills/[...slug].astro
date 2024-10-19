@@ -19,6 +19,7 @@ import "../../styles/wurm.styles.css";
 import "../../styles/post.styles.scss";
 import { AstroSeo } from "@astrolib/seo";
 
+const seoTitle = `Wurm Rodeo: Skilling Guide - ${entry.data.skillName}`
 ---
 
 <html lang="en">
@@ -28,7 +29,7 @@ import { AstroSeo } from "@astrolib/seo";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <Fonter />
-    <title>Wurm Rodeo</title>
+    <title>{seoTitle}</title>
     <AstroSeo description={entry.data.seoDescription}/>
   </head>
   <body>

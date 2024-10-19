@@ -3,8 +3,8 @@ import Header from "./header.astro";
 import Fonter from "./fonter.astro";
 import { AstroSeo } from "@astrolib/seo";
 
-import '../styles/wurm.styles.css';
-import '../styles/post.styles.scss';
+import "../styles/wurm.styles.css";
+import "../styles/post.styles.scss";
 
 const { title, seoDescription } = Astro.props;
 ---
@@ -18,7 +18,7 @@ const { title, seoDescription } = Astro.props;
     <link rel="sitemap" href="/sitemap-index.xml" />
     <Fonter />
     <title>Wurm Rodeo: {title}</title>
-    <AstroSeo description={seoDescription} />
+    <AstroSeo title={title} description={seoDescription} />
   </head>
   <body>
     <Header />

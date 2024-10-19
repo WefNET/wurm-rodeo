@@ -6,6 +6,7 @@ import "../styles/post.styles.scss";
 
 import heed from "../images/heed.webp";
 import { Image } from "astro:assets";
+import { AstroSeo } from "@astrolib/seo";
 ---
 
 <html lang="en">
@@ -15,7 +16,11 @@ import { Image } from "astro:assets";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <Fonter />
-    <title>Wurm Rodeo</title>
+    <AstroSeo
+      description="Let me 'rope you in' with my content about my adventures in Wurm Online, including my guides on leveling up different skills."
+      canonical="https://wurm.rodeo"
+    />
+    <title>Wurm Rodeo - Musings on the fantastic MMO Wurm Online</title>
   </head>
   <body>
     <Header />
