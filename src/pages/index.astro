@@ -18,15 +18,30 @@ import { AstroSeo } from "@astrolib/seo";
     <Fonter />
     <AstroSeo
       description="Let me 'rope you in' with my content about my adventures in Wurm Online, including my guides on leveling up different skills."
-      canonical="https://wurm.rodeo"
+      canonical="https://wurm.rodeo",
+      openGraph={{
+        url: 'https://wurm.rodeo',
+        title: 'Wurm Rodeo',
+        description: "Let me 'rope you in' with my content about my adventures in Wurm Online, including my guides on leveling up different skills.",
+        images: [
+          {
+            url: 'https://wurm.rodeo/og.webp',
+            width: 120,
+            height: 630,
+            alt: 'Wurm Rodeo Logo',
+            type: 'image/webp',
+          }
+        ],
+        site_name: "Wurm Rodeo"
+      }}
     />
-    <title>Wurm Rodeo - Musings on the fantastic MMO Wurm Online</title>
+    <title>Wurm Rodeo - Musings on the great MMO, Wurm Online</title>
   </head>
   <body>
     <Header />
 
     <div class="blog-panel">
-      <h1 class="satisfy-regular">Yeee-haw, Parder!</h1>
+      <h1 class="satisfy-regular">Yeee-haw, Pardner!</h1>
       <Image src={heed} format="webp" alt="Stuck in the oak." />
       <p>
         Oh, we've really outdone ourselves with this site for you—because
