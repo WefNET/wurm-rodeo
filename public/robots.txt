@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /sales/
+
+Sitemap: https://wurm.rodeo/sitemap-index.xml
