@@ -9,7 +9,7 @@ export interface Item {
     sold: boolean;
     soldPrice?: number;  // Optional, as it might not have a value if unsold
     soldTo?: string;  // Optional, as it might not have a value if unsold
-    soldDate?: Date;  // Optional; Date type for accurate date handling
+    soldDate?: Date;  // Optional; Date type for accurate date handlin
     description: string;
     categories: string;  // Array of categories
     cost_description: string;
