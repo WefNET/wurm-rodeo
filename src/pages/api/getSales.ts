@@ -4,7 +4,7 @@ import { query } from '../../lib/database';
 
 import type { APIRoute } from 'astro'
 
-export const getAllSales: APIRoute = async (context: any) => {
+export const getAllSales: APIRoute = async () => {
     try {
         // Execute the stored procedure
         const data: QueryResult = await query('CALL GetItemDetails()', []);
@@ -36,7 +36,7 @@ export const getAllSales: APIRoute = async (context: any) => {
     }
 }
 
-export const getCategories: APIRoute = async (context: any) => {
+export const getCategories: APIRoute = async () => {
     try {
         // Execute the stored procedure
         const data: QueryResult = await query('SELECT * FROM ActiveCategories ORDER BY name', []);

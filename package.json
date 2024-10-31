@@ -16,6 +16,7 @@
     "@astrolib/seo": "^1.0.0-beta.6",
     "astro": "^4.15.11",
     "astro-font": "^0.1.81",
+    "mysql2": "^3.11.3",
     "sass": "^1.78.0",
     "typescript": "^5.5.4"
   },
