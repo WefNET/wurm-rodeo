@@ -1,0 +1,47 @@
+---
+import Base from "../../../layout/BaseLayout.astro";
+import { getCategories } from "../../api/getSales";
+
+let categoryResponse = await getCategories(Astro);
+const categories = await categoryResponse.json();
+---
+
+<Base title="Sales Categories">
+  <div class="blog-panel">
+    <h1 class="satisfy-regular">Sales Categories</h1>
+    <p>
+      View <a href="/sales">all sales.</a>
+    </p>
+    <div class="tags">
+      {
+        categories.map((category: any) => (
+          <p class="tag">
+            <a href={`/forsale/categories/${category.name}`}>{category.name}</a>
+          </p>
+        ))
+      }
+    </div>
+  </div>
+</Base>
+
+<style is:inline>
+  a {
+    color: #00539f;
+    text-decoration: none;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    margin: 0.25em;
+    padding: 0.5em 1em;
+    font-size: 1.15em;
+    background-color: #f8fcfd;
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+  }
+</style>

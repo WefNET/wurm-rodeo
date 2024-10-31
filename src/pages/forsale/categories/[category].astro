@@ -1,0 +1,47 @@
+---
+import Base from "../../../layout/BaseLayout.astro";
+import SalesCardSingleItem from "../../../layout/SalesCardSingleItem.astro";
+import type { Item } from "../../../models/item";
+import { getAllSales, getCategories } from "../../api/getSales";
+
+const { category } = Astro.params;
+const catTitle = `${category}`;
+const catSeo = `Sales Category - ${category} from Jackjones`;
+
+let saleResponse = await getAllSales(Astro);
+const salesData: Item[] = await saleResponse.json();
+
+const filteredPosts = salesData.filter((p) => p.categories.includes(category!));
+
+// Required for dynamic routes
+export async function getStaticPaths() {
+  let categoryResponse = await getCategories(Astro);
+  const categoriesDb = await categoryResponse.json();
+
+  return categoriesDb.map((cat: { name: string }) => ({
+    params: { category: cat.name },
+  }));
+}
+---
+
+<Base title={catTitle} seoDescription={catSeo}>
+  <div class="blog-panel">
+    <h1 class="satisfy-regular">{category}</h1>
+    <p>
+      &laquo Return to <a href="/forsale/categories">categories</a>.
+    </p>
+
+    <div class="card-container">
+      {filteredPosts.map((post) => <SalesCardSingleItem item={post} />)}
+    </div>
+  </div>
+</Base>
+
+<style is:inline>
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+</style>
