@@ -18,6 +18,8 @@ const { Content } = await entry.render();
 const fakeEntries: any[] = [];
 
 fakeEntries.push(entry);
+
+export const prerender = true;
 ---
 
 <Base title={entry.data.name} seoDescription={entry.data.description}>

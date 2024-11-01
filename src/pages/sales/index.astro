@@ -8,6 +8,8 @@ const allSales = await getCollection("sales");
 const sales = allSales.filter((sale) =>
   (sale.data.sold === undefined || sale.data.sold === false)
 );
+
+export const prerender = true;
 ---
 <Base title="Sales by Jackjones">
   <div class="blog-panel">
