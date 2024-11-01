@@ -1,0 +1,35 @@
+---
+import Base from "../../layout/BaseLayout.astro";
+import SalesCardSingleItem from "../../layout/SalesCardSingleItem.astro";
+import type { Item } from "../../models/item";
+import { getAllSales } from "../api/getSales";
+
+let saleResponse = await getAllSales(Astro);
+const salesData: Item[] = await saleResponse.json();
+
+const sales = salesData.filter(
+  (sale) => sale.sold === undefined || sale.sold === false
+);
+---
+
+<Base title="Sales by Jackjones">
+  <div class="blog-panel">
+    <h1 class="satisfy-regular">Sales</h1>
+    <p>Note: Available only on the Southern Freedom Isles (SFI).</p>
+    <p>
+      View <a href="/forsale/categories">categories.</a>
+    </p>
+    <div class="card-container">
+      {salesData.map((post) => <SalesCardSingleItem item={post} />)}
+    </div>
+  </div>
+</Base>
+
+<style is:inline>
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+</style>
