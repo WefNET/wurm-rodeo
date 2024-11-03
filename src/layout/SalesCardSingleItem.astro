@@ -28,7 +28,7 @@ const costCalc = (cost: number) => {
   }
   <div class="card-header">
     <h3>
-      <a href=`/sales/${item.id}`>
+      <a href=`/forsale/${item.id}`>
         {item.rarity === 1 ? "Rare" : ""}
         {item.name} ({item.material})
       </a>
@@ -39,11 +39,11 @@ const costCalc = (cost: number) => {
       <strong>QL: </strong>
       {item.ql}
     </div>
-      <div>
-        <strong>Casts: </strong>
-        {item.casts ? item.casts : <span>None</span>}
-        <br />
-      </div>
+    <div>
+      <strong>Casts: </strong>
+      {item.casts ? item.casts : <span>None</span>}
+      <br />
+    </div>
     <div>
       <strong>Categories: </strong>
       {item.categories}
@@ -59,8 +59,6 @@ const costCalc = (cost: number) => {
 </div>
 
 <style is:inline>
-
-
   .card {
     position: relative; /* Enable positioning for the ribbon */
     background-color: white;

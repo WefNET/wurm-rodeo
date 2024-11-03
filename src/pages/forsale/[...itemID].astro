@@ -1,0 +1,50 @@
+---
+import Base from "../../layout/BaseLayout.astro";
+import SalesCardSingleItem from "../../layout/SalesCardSingleItem.astro";
+import type { Item } from "../../models/item";
+import { getAllSales } from "../api/getSales";
+
+const { itemID } = Astro.params;
+const id = itemID ? parseInt(itemID) : 0;
+
+let saleResponse = await getAllSales(Astro);
+const salesData: Item[] = await saleResponse.json();
+
+const item = salesData.find((item) => item.id === id);
+---
+
+<Base title={item?.name} seoDescription={item?.description}>
+  <div class="blog-panel">
+    <div style="display: flex; justify-content: space-between;">
+      <span>&laquo Return to <a href="/forsale">sales</a>.</span>
+      <span>&laquo Return to <a href="/forsale/categories">categories</a>.</span
+      >
+    </div>
+
+    <div class="card-container">
+      {item ? <SalesCardSingleItem item={item} /> : <p>Item not found</p>}
+    </div>
+
+    <br />
+    <br />
+    <div>
+      Conditions of Sale:
+      <ol>
+        <li>For sale in the Southern Freedom Isles (SFI) only.</li>
+        <li>WoA can be dispelled for free.</li>
+        <li>
+          Feel free to reach out to discuss prices—I'm open to negotiation!
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <style is:inline>
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+  </style>
+</Base>
