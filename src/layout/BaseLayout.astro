@@ -20,10 +20,10 @@ const { title, seoDescription } = Astro.props;
     <Fonter />
     <title>Wurm Rodeo: {title}</title>
     <AstroSeo title={title} description={seoDescription} />
-    <Analytics />
   </head>
   <body>
     <Header />
     <slot />
+    <Analytics />
   </body>
 </html>
