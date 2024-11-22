@@ -2,7 +2,6 @@
 import Header from "./header.astro";
 import Fonter from "./fonter.astro";
 import { AstroSeo } from "@astrolib/seo";
-import Analytics from "@vercel/analytics/astro";
 
 import "../styles/wurm.styles.css";
 import "../styles/post.styles.scss";
@@ -24,6 +23,5 @@ const { title, seoDescription } = Astro.props;
   <body>
     <Header />
     <slot />
-    <Analytics />
   </body>
 </html>
