@@ -17,7 +17,7 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
+   <sodipodi:namedview
      id="namedview1"
      pagecolor="#cecdcd"
      bordercolor="#666666"
@@ -37,47 +37,47 @@
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
-  <defs
+   <defs
      id="defs1" />
-  <g
+   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <g
+      <g
        id="g1"
        transform="matrix(0.61106659,0,0,0.65023974,404.16347,109.58789)">
-      <circle
+         <circle
          cx="800"
          cy="50%"
          r="50%"
          fill="#562a32"
          id="circle1" />
-      <circle
+         <circle
          cx="800"
          cy="50%"
          r="40%"
          fill="#e43f45"
          id="circle2" />
-      <circle
+         <circle
          cx="800"
          cy="50%"
          r="30.000002%"
          fill="#e7662b"
          id="circle3" />
-      <circle
+         <circle
          cx="800"
          cy="50%"
          r="20%"
          fill="#d8b54a"
          id="circle4" />
-      <circle
+         <circle
          cx="800"
          cy="50%"
          r="10%"
          fill="#ffffff"
          id="circle5" />
-    </g>
-    <text
+      </g>
+      <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:255.89px;line-height:1.25;font-family:Satisfy;-inkscape-font-specification:'Satisfy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;word-spacing:0px;fill:#05668d;fill-opacity:1;stroke:#ffffff;stroke-width:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
        x="74.167107"
@@ -85,14 +85,14 @@
        id="text3"
        transform="scale(0.87487716,1.1430176)"
        inkscape:label="wurm-rodeo">
-      <tspan
+         <tspan
          sodipodi:role="line"
          id="tspan3"
          x="74.167107"
          y="215.12837"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:255.89px;font-family:Satisfy;-inkscape-font-specification:'Satisfy, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#05668d;fill-opacity:1;stroke:#ffffff;stroke-width:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill">Wurm Rodeo</tspan>
-    </text>
-    <image
+      </text>
+      <image
        width="222.39107"
        height="243.84358"
        preserveAspectRatio="none"
@@ -102,18 +102,18 @@
        y="358.74854"
        transform="scale(-1,1)"
        inkscape:label="pony" />
-    <text
+      <text
        xml:space="preserve"
        style="font-size:40px;line-height:1.25;font-family:sans-serif;word-spacing:0px"
        x="221.91064"
        y="587.28491"
        id="text9"
        inkscape:label="yeee-haw">
-      <tspan
+         <tspan
          sodipodi:role="line"
          id="tspan9"
          x="221.91064"
          y="587.28491">Yeee-haw, Pardner!</tspan>
-    </text>
-  </g>
+      </text>
+   </g>
 </svg>
