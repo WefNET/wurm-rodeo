@@ -1,0 +1,44 @@
+/* Style the consent banner */
+.consent-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #f8f9fa; /* Light grey background */
+    padding: 1rem;
+    border-top: 2px solid #ccc; /* Subtle border */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+}
+
+.consent-banner h4 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+.consent-options {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.consent-options label {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+button#save-preferences {
+    background-color: #007bff; /* Blue button */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+button#save-preferences:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}

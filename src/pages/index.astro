@@ -3,6 +3,7 @@ import Header from "./../layout/header.astro";
 import Fonter from "./../layout/fonter.astro";
 import "../styles/wurm.styles.css";
 import "../styles/post.styles.scss";
+import "../styles/consent.styles.scss";
 
 import heed from "../images/heed.webp";
 import { Image } from "astro:assets";
@@ -58,8 +59,8 @@ export const prerender = true;
 
       // Configure Consent Mode
       gtag("consent", "default", {
-        ad_storage: "denied", // Default state
-        analytics_storage: "denied", // Default state
+        ad_storage: "granted", // Default state
+        analytics_storage: "granted", // Default state
       });
 
       // Example: Update Consent based on user action
@@ -73,14 +74,6 @@ export const prerender = true;
 
       // Add the Google Analytics configuration
       gtag("config", "G-ZTFZE7LM02");
-
-      // If you're also using Google Tag Manager
-      tagManager.initialize({
-        gtmId: "G-ZTFZE7LM02",
-        consentInitialization: {
-          consent: "default",
-        },
-      });
     </script>
   </head>
   <body>
@@ -96,5 +89,68 @@ export const prerender = true;
       </p>
       <p>Could someone help me get outta this freaking oak tree?</p>
     </div>
+
+    <!-- Consent Banner -->
+    <div id="consent-banner" class="consent-banner" style="display: none">
+      <h4>We use cookies to improve your experience.</h4>
+      <div class="consent-options">
+        <label>
+          <input type="checkbox" id="analytics-consent-checkbox" /> Enable Analytics
+          Cookies
+        </label>
+        <label>
+          <input type="checkbox" id="ad-consent-checkbox" /> Enable Advertising Cookies
+        </label>
+      </div>
+      <button id="save-preferences">Save Preferences</button>
+    </div>
+
+    <script is:inline>
+      // Check stored preferences on page load
+      window.addEventListener("DOMContentLoaded", () => {
+        const adConsent = localStorage.getItem("adConsent");
+        const analyticsConsent = localStorage.getItem("analyticsConsent");
+
+        if (adConsent && analyticsConsent) {
+          // Apply stored consent preferences
+          gtag("consent", "update", {
+            ad_storage: adConsent === "granted" ? "granted" : "denied",
+            analytics_storage:
+              analyticsConsent === "granted" ? "granted" : "denied",
+          });
+
+          // Hide the consent banner
+          document.getElementById("consent-banner").style.display = "none";
+        }
+      });
+
+      // Save preferences when the user clicks the button
+      document
+        .getElementById("save-preferences")
+        .addEventListener("click", function () {
+          const adConsent = document.querySelector("#ad-consent-checkbox")
+            .checked
+            ? "granted"
+            : "denied";
+          const analyticsConsent = document.querySelector(
+            "#analytics-consent-checkbox"
+          ).checked
+            ? "granted"
+            : "denied";
+
+          // Save preferences in localStorage
+          localStorage.setItem("adConsent", adConsent);
+          localStorage.setItem("analyticsConsent", analyticsConsent);
+
+          // Update Consent Mode
+          gtag("consent", "update", {
+            ad_storage: adConsent,
+            analytics_storage: analyticsConsent,
+          });
+
+          // Hide the consent banner
+          document.getElementById("consent-banner").style.display = "none";
+        });
+    </script>
   </body>
 </html>
