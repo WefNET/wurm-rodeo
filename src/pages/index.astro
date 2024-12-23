@@ -20,24 +20,38 @@ export const prerender = true;
     <Fonter />
     <AstroSeo
       description="Let me 'rope you in' with my content about my adventures in Wurm Online, including my guides on leveling up different skills."
-      canonical="https://wurm.rodeo",
+      canonical="https://wurm.rodeo"
+      ,
       openGraph={{
-        url: 'https://wurm.rodeo',
-        title: 'Wurm Rodeo - Musings on the great MMO, Wurm Online',
-        description: "Let me 'rope you in' with my content about my adventures in Wurm Online, including my guides on leveling up different skills.",
+        url: "https://wurm.rodeo",
+        title: "Wurm Rodeo - Musings on the great MMO, Wurm Online",
+        description:
+          "Let me 'rope you in' with my content about my adventures in Wurm Online, including my guides on leveling up different skills.",
         images: [
           {
-            url: 'https://wurm.rodeo/og.webp',
+            url: "https://wurm.rodeo/og.webp",
             width: 1200,
             height: 630,
-            alt: 'Wurm Rodeo Logo',
-            type: 'image/webp',
-          }
+            alt: "Wurm Rodeo Logo",
+            type: "image/webp",
+          },
         ],
-        site_name: "Wurm Rodeo"
+        site_name: "Wurm Rodeo",
       }}
     />
     <title>Wurm Rodeo - Musings on the great MMO, Wurm Online</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZTFZE7LM02"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-ZTFZE7LM02");
+    </script>
   </head>
   <body>
     <Header />
