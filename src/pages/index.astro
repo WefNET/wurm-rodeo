@@ -42,15 +42,45 @@ export const prerender = true;
     <title>Wurm Rodeo - Musings on the great MMO, Wurm Online</title>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZTFZE7LM02"></script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      is:inline
+      src="https://www.googletagmanager.com/gtag/js?id=G-ZTFZE7LM02"></script>
     <script is:inline>
+      // Initialize dataLayer
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
+
+      // Initialize gtag
       gtag("js", new Date());
 
+      // Configure Consent Mode
+      gtag("consent", "default", {
+        ad_storage: "denied", // Default state
+        analytics_storage: "denied", // Default state
+      });
+
+      // Example: Update Consent based on user action
+      // Assuming you provide a consent UI
+      function updateConsent(adConsent, analyticsConsent) {
+        gtag("consent", "update", {
+          ad_storage: adConsent ? "granted" : "denied",
+          analytics_storage: analyticsConsent ? "granted" : "denied",
+        });
+      }
+
+      // Add the Google Analytics configuration
       gtag("config", "G-ZTFZE7LM02");
+
+      // If you're also using Google Tag Manager
+      tagManager.initialize({
+        gtmId: "G-ZTFZE7LM02",
+        consentInitialization: {
+          consent: "default",
+        },
+      });
     </script>
   </head>
   <body>
